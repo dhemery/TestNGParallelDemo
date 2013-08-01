@@ -3,7 +3,7 @@ TestNGParallelDemo
 
 Demonstrate that TestNG 6.8.5 may run different methods in a single class on different threads
 
-This test consists of seven test classes.
+This project consists of seven test classes.
 Each class has two methods,
 one of which depends on the other.
 Each method records and prints the name of its thread.
