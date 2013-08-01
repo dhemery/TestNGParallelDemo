@@ -1,0 +1,26 @@
+<project name="testng.parallel.demo" default="test">
+    <path id="testng.path">
+        <fileset dir="${basedir}/lib" includes="*.jar" />
+    </path>
+
+    <path id="run.path">
+        <pathelement path="build" />
+        <path refid="testng.path" />
+    </path>
+
+    <taskdef resource="testngtasks" classpathref="testng.path"/>
+
+    <target name="clean">
+        <delete dir="test-output" />
+        <delete dir="build" />
+    </target>
+
+    <target name="test">
+        <echo message="${toString:run.path}" />
+        <mkdir dir="build" />
+        <javac includeantruntime="false" srcdir="test" destdir="build" classpathref="testng.path" />
+        <testng classpathref="run.path">
+            <xmlfileset dir="." includes="testng.xml" />
+        </testng>
+    </target>
+</project>
