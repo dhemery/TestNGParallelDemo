@@ -10,13 +10,13 @@ public class TestBase {
     Set<Thread> threads = new HashSet<>();
 
     @AfterClass(alwaysRun=true)
-    public void listThreads() {
-        recordThread("listThreads");
+    public void afterClass() {
+        recordThread(getClass().getSimpleName() + ".afterClass()");
         System.out.println(getClass().getSimpleName() + " ran on threads: " + threads);
     }
 
     protected void recordThread(Method method) {
-        recordThread(method.toString());
+        recordThread(method.getDeclaringClass().getSimpleName() + '.' + method.getName() + "()");
     }
 
     private void recordThread(String name) {
